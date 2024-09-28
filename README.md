@@ -7,7 +7,7 @@
  1. Tenemos un ambiente virtual creado con la version de Python 3.10
  2. Se genera el requirements.txt en la raiz del proyecto el cual contiene todos los recursos de librerias y paquetes necesarios para la ejecución del proyecto:
 
-   ![imagen](https://github.com/user-attachments/assets/120c612e-20ce-42b7-98d2-535882f7a13c)
+   ![imagen](https://github.com/user-attachments/assets/99a96c90-e4a5-496a-9dd4-cce3abd1b4eb)
 
 3. Con el comando basico instalamos:
 
@@ -17,16 +17,16 @@ pip install -r requirements.txt
 
 1. Se presenta la estructura del proyecto y el archivo main que pone en servicio la aplicación:
 
-   ![imagen](https://github.com/user-attachments/assets/910938b4-79af-4513-ab38-18783c1712f2)
+   ![imagen](https://github.com/user-attachments/assets/c665f1df-23f8-43a4-98f3-bdcc40e8a098)
 
 2. Se utilizo Pycharm como Ide para el desarrollo, ejecución y depuración del proyecto. Se comparte la configuración del proyecto en Pycharm:
-   ![imagen](https://github.com/user-attachments/assets/04f9c231-9a43-4f0c-a34e-0124b72c0c9f)
+   ![imagen](https://github.com/user-attachments/assets/6346deb3-6800-4573-8113-272c77b4ddc3)
 
 3. Ejecutando el proyecto:  
-   ![imagen](https://github.com/user-attachments/assets/ae5e1e67-aeca-45fa-a6a5-775ae6f2059c)
+   ![imagen](https://github.com/user-attachments/assets/d0509f76-545b-4df9-a33a-e01459539c76)
 
 4. Visualización de la aplicación:
-   ![imagen](https://github.com/user-attachments/assets/a11886e7-61c7-4a2a-8a91-be9b3492ab9c)
+   ![imagen](https://github.com/user-attachments/assets/287f324d-6c2b-4d24-8e75-c70e87f412ef)
 
 ## Configuración de Bases de datos:
    1. Se diseña el siguiente modelo de BD basandonos en la logica de negocio requerida para la aplicación:
