@@ -7,6 +7,7 @@ from app.schemas import likes_schema
 class LikesService:
     def __init__(self, db: Session):
         self.like_repository = LikeRepository(db)
+        self.db = db
 
     def list_likes(self, ):
         return self.like_repository.get_likes()
@@ -24,3 +25,10 @@ class LikesService:
             video.likes = likes  # Asignar los likes al video
             videos_with_likes.append(video)
         return videos_with_likes
+
+    def add_like_or_dislike_to_video(self, like_data: dict):
+        new_like_dislike = Likes(**like_data)
+        self.db.add(new_like_dislike)
+        self.db.commit()
+        self.db.refresh(new_like_dislike)
+        return new_like_dislike

@@ -49,7 +49,6 @@ class Likes(Base):
     __tablename__ = 'likes'
 
     id_lk = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    video_lk = Column(Boolean, nullable=False)
     num_video_lk = Column(Integer, default=0)
     id_user_lk = Column(Integer, ForeignKey('users.id_usr', name="fk_user_lk", ondelete="SET NULL", onupdate="CASCADE"), nullable=True)
     id_video_lk = Column(Integer, ForeignKey('videos.id_vd', name="fk_video_lk", ondelete="SET NULL", onupdate="CASCADE"), nullable=True)

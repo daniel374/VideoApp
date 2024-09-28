@@ -33,7 +33,7 @@ app = FastAPI()
 
 # Configurar CORS
 origins = [
-    "http://localhost:3000" #URL Frontend
+    "http://localhost:3000"  # URL Frontend
 ]
 
 app.add_middleware(
@@ -44,14 +44,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-#path storage thumbnail
+# path storage thumbnail
 THUMBNAIL_DIR = "static/images/thumbnail"
 # path  storage videos
 VIDEO_DIR = "static/videos"
 
 # Ruta para servir archivos estaticos
 # Pytest
-#app.mount("/static", StaticFiles(directory="app/static"), name="static")
+# app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 # Run and Debug
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -113,13 +113,13 @@ def create_video(thumbnail_data: ThumbnailCreate, db: Session = Depends(database
 
 @app.get("/videos/{id_vd}", name="show_video")
 def show_video(id_vd: int, request: Request, db: Session = Depends(database.get_db)):
-
-    video = db.query(Video).filter(Video.id_vd == id_vd).first()
+    video_service = VideoService(db)
+    video = video_service.get_video(id_vd)
 
     if video is None:
         raise HTTPException(status_code=404, detail="Video not found")
 
-    video_service = VideoService(db)
+
     # Obtener videos relacionados (esto es solo un ejemplo, puedes usar alguna lógica de recomendación)
     related_videos = video_service.get_related_videos(id_vd)
 
@@ -130,12 +130,12 @@ def show_video(id_vd: int, request: Request, db: Session = Depends(database.get_
     })
 
 
-@app.post("/videos/{video_id}/comments")
-def add_comment_to_video(video_id: int, detail_cmt: str = Form(...), db: Session = Depends(database.get_db)):
+@app.post("/videos/{id_vd}/comments")
+def add_comment_to_video(id_vd: int, detail_cmt: str = Form(...), db: Session = Depends(database.get_db)):
     comment_service = CommentService(db)
     comment_data = {"detail_cmt": detail_cmt}
-    comment_service.add_comment_to_video(video_id, comment_data)
-    return RedirectResponse(url=f"/videos/{video_id}", status_code=303)
+    comment_service.add_comment_to_video(id_vd, comment_data)
+    return RedirectResponse(url=f"/videos/{id_vd}", status_code=303)
 
 
 @app.get("/search/", response_model=List[VideoSearch])
@@ -166,7 +166,8 @@ def search_videos(request: Request, search: str, filtro: str, db: Session = Depe
 
 @app.post("/videos/{id_vd}/like")
 def handle_like(id_vd: int, like_data: LikeCreate, db: Session = Depends(database.get_db)):
-    video = db.query(Video).filter(Video.id_vd == id_vd).first()
+    video_service = VideoService(db)
+    video = video_service.get_video(id_vd)
 
     like_service = LikesService(db)
     likes = like_service.list_likes_for_video(id_vd)
@@ -174,33 +175,35 @@ def handle_like(id_vd: int, like_data: LikeCreate, db: Session = Depends(databas
         raise HTTPException(status_code=404, detail="Video not found")
 
     # Aquí podrías incluir la lógica para verificar si el usuario ya ha dado like/dislike.
-    if like_data.video_lk:
-        num_video_lk = likes.num_video_lk + 1
+    if like_data.isLike and len(likes):
+        num_video_lk = likes[0].num_video_lk + 1 if likes[0].num_video_lk > 0 else 1
+    elif len(likes):
+        num_video_lk = likes[0].num_video_lk - 1 if likes[0].num_video_lk > 0 else 0
     else:
-        num_video_lk = likes.num_video_lk - 1
+        num_video_lk = 1 if like_data.isLike else 0
 
-    lvideo_service = VideoService(db)
-    like = Likes(
-        video_lk=like_data.like,
-        id_user_lk=like_data.user_id,
-        id_video_lk=id_vd,
-        num_video_lk=num_video_lk
-    )
+    like = {
+        "id_user_lk": video.id_autor_vd,
+        "id_video_lk": id_vd,
+        "num_video_lk": num_video_lk
+    }
 
-    db.add(like)
-    db.commit()
-    return {"message": "Like added"}
+    like_service.add_like_or_dislike_to_video(like_data=like)
+    return RedirectResponse(url=f"/videos/{id_vd}", status_code=303)
 
-#Para visualizar los path de las rutas que tenemos configuradas:
+
+# Para visualizar los path de las rutas que tenemos configuradas:
 """
 for route in app.routes:
     print(route.name, route.path)
 """
 
+
 async def main():
     config = uvicorn.Config("main:app", port=5000, log_level="info")
     server = uvicorn.Server(config)
     await server.serve()
+
 
 if __name__ == "__main__":
     asyncio.run(main())

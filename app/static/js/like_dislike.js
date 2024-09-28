@@ -1,13 +1,16 @@
+const id_vd = 1;
+const isLike = 1;
+const url = `/videos/${id_vd}/like`;
+
 function sendLike(isLike, id_vd) {
-    fetch('/videos/${id_vd}/like', {
+    fetch(`/videos/${id_vd}/like`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-          like: isLike,
-          user_id: 1,
-          id_vd: id_vd
+          id_video_lk: id_vd,
+          isLike: isLike
       }), // 1 es el id del video
     })
     .then(response => response.json())

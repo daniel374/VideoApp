@@ -20,8 +20,17 @@
                     <a href="#{{thumbnail.name_thn}}" class="play-button" onclick="openModal('{{thumbnail.name_thn}}')">Reproducir</a>
                 </div>
                 <div class="like-dislike">
-                    <button id="likeBtn" onclick="sendLike(true, {{ video.id_vd }})" title="Me gusta">👍</button>
-                    <button id="dislikeBtn" onclick="sendLike(false, {{ video.id_vd }})" title="No me gusta">👎</button>
+                    <button id="likeBtn" onclick="sendLike(1, {{ video.id_vd }})" title="Me gusta">👍</button>
+                    <button id="dislikeBtn" onclick="sendLike(0, {{ video.id_vd }})" title="No me gusta">👎</button>
+                </div>
+                <div class="container-likes">
+                    {% if video.likes_vd and video.likes_vd|length > 0 %}
+                        <p>{{video.likes_vd[0].num_video_lk}}</p>
+                        <p>{{video.likes_vd[0].num_video_lk}}</p>
+                    {% else %}
+                        <p>0</p>
+                        <p>0</p>
+                    {% endif %}
                 </div>
             </div>
         </a>

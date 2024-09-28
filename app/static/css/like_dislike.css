@@ -8,19 +8,26 @@
     transition: transform 0.3s, color 0.3s;
   }
 
-  .like-dislike button:hover {
-    transform: scale(1.3);
-    color: #1d72b8; /* Cambia el color al pasar el mouse */
-  }
+.container-likes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
 
-  .like-dislike button:focus {
-    outline: none;
-  }
+.like-dislike button:hover {
+  transform: scale(1.3);
+  color: #1d72b8; /* Cambia el color al pasar el mouse */
+}
 
-  #likeBtn:hover {
-    color: #4CAF50; /* Color verde para el botón "Me gusta" */
-  }
+.like-dislike button:focus {
+  outline: none;
+}
 
-  #dislikeBtn:hover {
-    color: #f44336; /* Color rojo para el botón "No me gusta" */
-  }
+#likeBtn:hover {
+  color: #4CAF50; /* Color verde para el botón "Me gusta" */
+}
+
+#dislikeBtn:hover {
+  color: #f44336; /* Color rojo para el botón "No me gusta" */
+}

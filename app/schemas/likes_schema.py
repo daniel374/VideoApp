@@ -3,15 +3,14 @@ from typing import Optional
 
 
 class LikeCreate(BaseModel):
-    video_lk: bool
-    num_video_lk: int
-    id_user_lk: int
     id_video_lk: int
+    isLike: Optional[int] = None
+    num_video_lk: Optional[int] = None
+    id_user_lk: Optional[int] = None
 
 
 class LikesResponse(BaseModel):
     id_lk: int
-    video_lk: bool
     num_video_lk: int
     id_user_lk: int
     id_video_lk: int
