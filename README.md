@@ -26,24 +26,29 @@ pip install -r requirements.txt
    ![imagen](https://github.com/user-attachments/assets/d0509f76-545b-4df9-a33a-e01459539c76)
 
 4. Visualización de la aplicación:
-   ![imagen](https://github.com/user-attachments/assets/287f324d-6c2b-4d24-8e75-c70e87f412ef)
+   4.1 ![imagen](https://github.com/user-attachments/assets/287f324d-6c2b-4d24-8e75-c70e87f412ef)
+
+   4.2 ![imagen](https://github.com/user-attachments/assets/174e24a6-047d-484f-af1d-94f6efbe2f79)
+
+   4.3 ![imagen](https://github.com/user-attachments/assets/45e9e48c-1cd4-486b-b525-a11984ef9ab4)
 
 ## Configuración de Bases de datos:
    1. Se diseña el siguiente modelo de BD basandonos en la logica de negocio requerida para la aplicación:
-      ![imagen](https://github.com/user-attachments/assets/dc807235-d358-43d1-a7d2-e84ef2cdc89e)
-
-   1. Se comparte un script que permite alimentar la BD con data, para poderla visualizar en la aplicación.
+      ![imagen](https://github.com/user-attachments/assets/b22acc66-2498-44cf-a9ef-7cedae6ab30d)
+      
+   2. Se comparte un script que permite alimentar la BD con data, para poderla visualizar en la aplicación.
 ### Alimentación de la BD por medio de Postman:
    1. Se comparte la colección con los servicios previamente configurados en Postman:
-      ![imagen](https://github.com/user-attachments/assets/a31fe832-dd8f-46ef-bdc6-4ee63fd8c392)
+      ![imagen](https://github.com/user-attachments/assets/3fbe21f1-9a89-41e7-bd16-b4da4fff7618)
 
-   1. Contamos con servicios basicos para agregar información y consultarla utiles para alimentar la BD:
+   2. Contamos con servicios basicos para agregar información y consultarla utiles para alimentar la BD:
 
-      ![imagen](https://github.com/user-attachments/assets/faae9555-02d7-489c-90fa-8fcc93ea7957)
-
-      ![imagen](https://github.com/user-attachments/assets/e0b1ef47-335a-4d09-bb90-4d81b1c5548f)
-
+      ![imagen](https://github.com/user-attachments/assets/fc7e2d4a-5962-44a4-8893-ee3ceb53238f)
+      
+   4. Ejemplo de consumo de Api que lista los videos:
+      ![imagen](https://github.com/user-attachments/assets/87a138b7-58c5-4d98-bc85-002ea0d6f2e1)
 
 ## Ejemplo de ejecucion de pruebas unitarias:
-![imagen](https://github.com/user-attachments/assets/a8b840f9-c836-4f55-aa81-95eb48b6d02f)
+![imagen](https://github.com/user-attachments/assets/e256ab59-243a-459c-a755-b5b38e34d6ed)
+
 
