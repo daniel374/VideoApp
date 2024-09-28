@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}{{ video.name }}{% endblock %}
+{% block css %}
+    /* Estilos específicos para la página de detalle de video */
+    .container {
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+    }
+
+    .main-content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .video-section {
+        width: 70%;
+        padding-right: 20px;
+    }
+
+    .related-videos {
+        width: 30%;
+    }
+
+    .related-videos ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .related-videos li {
+        margin-bottom: 10px;
+    }
+
+    .related-videos img {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .comments {
+        margin-top: 20px;
+    }
+
+    .comments ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .video-card {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <!-- Main Content Section -->
+        <div class="main-content">
+            <!-- Left section: Video, Thumbnail, Description, and Comments -->
+            {% for thumbnail in video.thumbnails %}
+
+                <div class="video-section">
+                    <video width="100%" controls poster="../{{ thumbnail.url_thn }}">
+                        <source src="../{{ video.url_vd }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h2>{{ video.name_vd }}</h2>
+                    <p>{{ video.description_vd }}</p>
+
+                    <!-- Comments section -->
+                    <!-- Formulario para agregar un nuevo comentario -->
+                    <h4>Agregar nuevo comentario:</h4>
+                    <form action="/videos/{{ video.id_vd }}/comments" method="post">
+                        <textarea name="detail_cmt" rows="4" placeholder="Agrega tu comentario"></textarea>
+                        <br>
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    <div class="comments">
+                        <h3>Comments</h3>
+                        <ul>
+                            {% for comment in video.comments_vd %}
+                            <li>{{ comment.id_cmt }}: {{ comment.detail_cmt }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <!-- Right section: Related videos list -->
+            <div class="related-videos">
+                <h3>Videos Relacionados</h3>
+                {% if related_videos %}
+                <ul>
+                    {% for related_video in related_videos %}
+                    <li>
+                        <a href="{{ url_for('show_video', id_vd=related_video.id_vd) }}">
+                            <img src="../{{ related_video.thumbnails[0].url_thn }}" alt="Thumbnail" width="120">
+                            <p>{{ related_video.name_vd }}</p>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <p>No se encuentran videos que cumplan el criterio de busqueda</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

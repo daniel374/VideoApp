@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "6f95ad91-b194-4133-b582-899875700261",
+		"name": "PT AppinIT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5285784"
+	},
+	"item": [
+		{
+			"name": "list users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name_usr\": \"edwin\",\r\n    \"email_usr\": \"edwin@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add videos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name_vd\": \"7 DEPORTIVOS BARATOS QUE SIEMPRE SOÑASTE TENER ｜｜ MENOS DE 10 MIL DOLARES.mp4\",\r\n    \"url_vd\": \"./static/videos/7 DEPORTIVOS BARATOS QUE SIEMPRE SOÑASTE TENER ｜｜ MENOS DE 10 MIL DOLARES.mp4\",\r\n    \"description_vd\": \"Mis deportivos preferidos\",\r\n    \"id_autor_vd\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/videos/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"videos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add thumbnails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name_thn\": \"7 DEPORTIVOS BARATOS QUE SIEMPRE SOÑASTE TENER ｜｜ MENOS DE 10 MIL DOLARES.mp4\",\r\n    \"url_thn\": \"./static/images/thumbnail/7 DEPORTIVOS BARATOS QUE SIEMPRE SOÑASTE TENER ｜｜ MENOS DE 10 MIL DOLARES.jpg\",\r\n    \"description_thn\": \"Hermosas camionetas economicas y muy rendidoras\",\r\n    \"id_video_thn\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/thumbnails/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"thumbnails",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.video-section {
+    width: 70%;
+    padding-right: 20px;
+}
+
+.related-videos {
+    width: 30%;
+}
+
+.related-videos ul {
+    list-style: none;
+    padding: 0;
+}
+
+.related-videos li {
+    margin-bottom: 10px;
+}
+
+.related-videos img {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comments {
+    margin-top: 20px;
+}
+
+.comments ul {
+    list-style: none;
+    padding: 0;
+}
+
+.video-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}

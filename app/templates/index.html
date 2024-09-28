@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Videos con Interacción{% endblock %}
+
+{% block content %}
+
+    <h1 style="text-align: center;">Listado de Videos con Interacción</h1>
+
+    <div class="card-container">
+        <!-- Card 1 -->
+        {% for video, thumbnail in video_thumbnail_pairs %}
+        <a href="{{ url_for('show_video', id_vd=video.id_vd) }}">
+            <div class="card">
+                <img src="{{ thumbnail.url_thn }}" alt="Video 1">
+                <!--<button class="like-button" onclick="likeVideo('{{thumbnail.name_thn}}')">❤️</button>-->
+                <div class="card-body">
+                    <h2 class="card-title">{{thumbnail.name_thn}}</h2>
+                    <p class="card-date">Publicado el: {{thumbnail.date_thn}}</p>
+                    <p class="card-description">{{thumbnail.description_thn}}</p>
+                    <a href="#{{thumbnail.name_thn}}" class="play-button" onclick="openModal('{{thumbnail.name_thn}}')">Reproducir</a>
+                </div>
+                <div class="like-dislike">
+                    <button id="likeBtn" onclick="sendLike(true, {{ video.id_vd }})" title="Me gusta">👍</button>
+                    <button id="dislikeBtn" onclick="sendLike(false, {{ video.id_vd }})" title="No me gusta">👎</button>
+                </div>
+            </div>
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- Modal Video  -->
+    {% for video in videos %}
+    <div id="{{video.name_vd}}" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('{{video.name_vd}}')">&times;</span>
+            <video id="my-video1" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
+                <source src="{{ video.url_vd }}" type="video/mp4" />
+
+                Tu navegador no soporta la reproducción de este video.
+            </video>
+        </div>
+    </div>
+    {% endfor %}
+
+
+{% endblock %}

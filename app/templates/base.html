@@ -1,0 +1,46 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Aplicación de Videos{% endblock %}</title>
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/cards_video.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/like_dislike.css') }}">
+    <link rel="icon" href="{{ url_for('static', path='favicon.ico') }}" type="image/x-icon">
+    <style>
+        {% block css %}
+        {% endblock %}
+    </style>
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Mi App de Videos</a>
+            <form action="/search/" method="GET" class="search-form">
+                <input type="text" name="search" placeholder="Buscar por videos" value="{{ request.query_params.get('search', '') }}">
+                <select name="filtro" id="filtro">
+                    <option value="Titulo" {% if filtro =='Titulo' %}selected{% endif %}>Titulo</option>
+                    <option value="Author" {% if filtro =='Author' %}selected{% endif %}>Author</option>
+                </select>
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Contenido dinámico -->
+    <div class="content">
+        {% block content %}
+        <!-- Aquí se inyectará el contenido de cada página específica -->
+        {% endblock %}
+    </div>
+
+    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+    <script src="{{ url_for('static', path='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', path='js/app.js') }}"></script>
+    <script src="{{ url_for('static', path='js/like_dislike.js') }}"></script>
+</body>
+</html>
